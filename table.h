@@ -7,7 +7,7 @@ class Table
 {
 public:
 
-    Table();
+    Table():matrix{0, std::vector<Cell>(0)}{}
     Table(size_t rows, size_t columns):matrix{rows, std::vector<Cell>(columns)}{}
     Table(Table&);
     ~Table();
@@ -25,6 +25,7 @@ public:
     double get_ncell(std::size_t row, std::size_t column);
 
 private:
+    void size_check(size_t,size_t);
     std::vector <std::vector<Cell>> matrix;
 
 };
