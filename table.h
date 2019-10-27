@@ -2,11 +2,13 @@
 #include <vector>
 #include "Cell.h"
 #include "iostream"
+#include "ostream"
 
 class Table
 {
 public:
 
+    friend std::ostream & operator<<(std::ostream &, const Table);
     Table():matrix{0, std::vector<Cell>(0)}{}
     Table(size_t rows, size_t columns):matrix{rows, std::vector<Cell>(columns)}{}
     Table(Table&);

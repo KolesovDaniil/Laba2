@@ -36,13 +36,12 @@ public:
           numeric_value{i_numeric_value},
           set_string_value{false},
           set_numeric_value{true}{}
+
     Cell(const Cell& cell)
         : string_value{cell.string_value},
           numeric_value{cell.numeric_value},
           set_string_value{cell.set_string_value},
           set_numeric_value{cell.set_numeric_value}{}
-
-    ~Cell();
 };
 
 

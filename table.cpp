@@ -1,36 +1,40 @@
 #include "table.h"
 
 using namespace std;
-
-
+ostream& operator<<(ostream& os, Table table){
+    for(size_t i = 0; i!=table.size().first; ++i){
+        for(size_t j = 0; j!=table.size().second; ++j){
+            if(table.type_check(i,j)=='n') cout << table.get_ncell(i,j) << ' ';
+            else if (table.type_check(i,j)=='s') cout << table.get_scell(i,j) << ' ';
+            else cout << ' ';
+        }
+        cout << endl;
+    }
+    return os;
+}
 void Table::size_check(size_t row, size_t column){
-    if(row > matrix.size() || column > matrix[0].size()) throw "Out_of_range";
+
+    if(row > matrix. size() || column > matrix[0].size()) throw "Out_of_range";
 }
 
 string Table::get_scell(size_t row, size_t column){
-    try {
-        size_check(row,column);
-        return matrix[row][column].get_str();
-    } catch (string str) {
-        cout << str << endl;
-    }
-    return "hello";
+
+    size_check(row,column);
+    return matrix[row][column].get_str();
+
 }
+
 double Table::get_ncell(size_t row, size_t column){
-    try {
-        size_check(row,column);
-        return matrix[row][column].get_num();
-    } catch (...) {
-        cout << "String type" << endl;
-    }
-    return 1.1;
+
+    size_check(row,column);
+    return matrix[row][column].get_num();
 }
 
 void Table::set_scell(size_t row, size_t column, string str){
     try {
         size_check(row,column);
-    } catch (string str) {
-        cout << str << endl;
+    } catch (const char* str) {
+        throw str;
     }
     matrix[row][column].set(str);
 }
@@ -38,8 +42,8 @@ void Table::set_scell(size_t row, size_t column, string str){
 void Table::set_ncell(size_t row, size_t column, double num){
     try {
         size_check(row,column);
-    } catch (string str) {
-        cout << str << endl;
+    } catch (const char* str) {
+        throw str;
     }
     matrix[row][column].set(num);
 }
@@ -78,6 +82,7 @@ Table::Table(Table& table){
             }
         }
 }
+
 Table::~Table(){
     matrix.clear();
 }
@@ -95,7 +100,7 @@ double Table::sum(size_t  column_number){
     for(size_t  j=0; j<matrix.size(); j++){
         try {
             sum += matrix[column_number][j].get_num();
-        } catch (std::string str) {
+        } catch (const char* str) {
             std::cout<<str<<std::endl;
         }
     }
@@ -107,7 +112,7 @@ double Table::mean(std::size_t  column_number){
     for(size_t  j=0; j<matrix.size(); j++){
         try {
             sum += matrix[column_number][j].get_num();
-        } catch (std::string str) {
+        } catch (const char* str) {
             std::cout<<str<<std::endl;
         }
     }

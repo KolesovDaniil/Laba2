@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-Cell::~Cell(){}
-
 void Cell::set(std::string i_string_value){
 
         set_numeric_value = false;
@@ -14,11 +12,9 @@ void Cell::set(std::string i_string_value){
 
 void Cell::set(double i_numeric_value){
 
-        std::cout << "point" << std::endl;
         set_string_value = false;
         set_numeric_value = true;
         numeric_value = i_numeric_value;
-        std::cout << i_numeric_value << std::endl;
 
 }
 

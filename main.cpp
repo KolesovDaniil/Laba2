@@ -4,26 +4,22 @@
 using namespace std;
 int main()
 {
-    Cell cell{65};
-    Cell cell_copy(cell);
-    cout << cell_copy.get_num() << endl;
-//    Table x(1,1);
-//    cout << 1;
-//    cout << x.get_ncell(0,0);
-//    x.set_scell(0,0,"123");
-//    cout << 1;
-//    x.set_ncell(0,0,3.0);
-//    x.set_scell(0,0,"123");
-//    cout << 1;
-//    std::cout << x.get_ncell(0,0) << std::endl;
-//    int n = 3;
+    Table table{3,3};
+    table.set_ncell(0,0,54);
+    cout << "1: " << table.get_ncell(0,0) << endl;
+    cout << "2: " << table.get_ncell(2,2) << endl;
+    try {
+        cout << "3: " << table.get_scell(1000,1000) << endl;
+    } catch (const char* str) {
+        cout << str << endl;
+    }
+    try {
+        table.set_ncell(6,6,56);
+    } catch (const char* str) {
+        cout << "4: " <<str << endl;
+    }
 
-//    size_t c = size_t(n);
-
-//    std::vector<std::vector<Cell> > matrix(n, std::vector<Cell>(n));
-
-//    matrix[n][n] = 3;
-//    cout << matrix.size() << endl << matrix[0].size()<<endl;
-//    cout << matrix[0][0];
+    vector<int> vec = {1,2,3,4,5};
+    cout << vec[0] << endl;
     return 0;
 }
